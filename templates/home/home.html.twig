@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Quai Antique{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+
+    {% endblock %}
+</head>
+<body>
+{% include 'includes/navbar.html.twig' %}
+
+{% block body %}
+<div class="container gx-0">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h1>Gourmand, Pétillant, Acidulé</h1>
+            <p>« Nous vous emmenons à la découverte de la délicatesse d’une rose<br>
+                d’asperges, du secret d’un fumet ou d’un croustillant, de la finesse d’une <br>
+                alliance coco-betteraves-foie gras, savourez une cuisine de caractère,<br>
+                moderne, innovante et précise. »
+            </p>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <img src={{ asset('media/img/chef.png') }}>
+        </div>
+    </div>
+
+    <div class="row full-width">
+        <div class="col-md-6 col-sm-12 full-width">
+            <div class="photo-container">
+                <img class="full-width" src={{ asset('media/img/carottes.png') }}>
+                <button>Réservation</button>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 full-width" >
+            <div class="photo-container">
+                <img class="full-width" src={{ asset('media/img/carottes.png') }}>
+                <button>Menu</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <div class="background-image">
+                <h2>Texte en haut à gauche</h2>
+                <p class="text-right">Texte en bas à droite</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+</body>
+</html>
