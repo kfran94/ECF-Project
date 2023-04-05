@@ -1,0 +1,11 @@
+<div id="registration-form">
+    {{ form_start(registrationForm) }}
+    {{ form_widget(registrationForm.name) }}
+    {{ form_widget(registrationForm.firstname) }}
+    {{ form_widget(registrationForm.email) }}
+    {{ form_widget(registrationForm.plainPassword, {
+        label: 'Mot de passe'
+    }) }}
+    {{ form_widget(registrationForm.allergen) }}
+    {{ form_end(registrationForm) }}
+</div>

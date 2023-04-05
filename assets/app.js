@@ -18,12 +18,12 @@ import 'jquery';
 
 import reservationModal from './js/reservationModal'
 import loginModal from './js/loginModal'
-import modalSignUp from './js/modalSignUp'
+import modalSignIn from './js/modalSignIn'
 import navbar from './js/navbar'
 
 reservationModal.init();
 loginModal.init();
-modalSignUp.init();
+modalSignIn.init();
 navbar.init()
 
 
