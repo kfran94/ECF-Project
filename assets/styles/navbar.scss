@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #000; /* Fond noir */
+  .navbar-brand {
+    color: #b1b1b1; /* Couleur du texte */
+    &:hover {
+      color: #ecf0f1; /* Couleur du texte au survol */
+    }
+  }
+  .nav-link {
+    color: #b1b1b1; /* Couleur du texte */
+    &:hover {
+      color: #ecf0f1; /* Couleur du texte au survol */
+    }
+    &.active {
+      color: #ecf0f1; /* Couleur du texte pour l'élément actif */
+    }
+  }
+  .navbar-toggler-icon {
+    border-color: #b1b1b1; /* Couleur de la ligne de l'icône */
+  }
+  .navbar-collapse {
+    .dropdown-menu {
+      background-color: #000; /* Fond noir pour le menu déroulant */
+      a {
+        color: #b1b1b1; /* Couleur du texte */
+        &:hover {
+          color: #ecf0f1; /* Couleur du texte au survol */
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.modal {
+
+  .modal-content {
+    background-color: #ecf0f1;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+    .modal-title {
+      color: #000;
+    }
+
+    .close {
+      background-color: #6A6765;
+      color: #000;
+      transition: all 0.2s ease-in-out;
+
+
+      &:hover {
+        color: #fff ;
+        background-color: red;
+      }
+    }
+
+    .modal-footer {
+      .btn-primary {
+        background-color: #0047AB;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          color: #000 ;
+          background-color: #0077CC;
+        }
+      }
+      button {
+        background-color: #6A6765;
+        border: none;
+        color: #fff;
+        transition: all 0.2s ease-in-out;
+
+
+        &:hover {
+          background-color: #b1b1b1;
+          color: #000;
+        }
+      }
+    }
+  }
+}

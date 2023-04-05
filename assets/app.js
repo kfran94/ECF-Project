@@ -13,3 +13,26 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';
+
+import 'jquery';
+
+import reservationModal from './js/reservationModal'
+import loginModal from './js/loginModal'
+import modalSignUp from './js/modalSignUp'
+import navbar from './js/navbar'
+
+reservationModal.init();
+loginModal.init();
+modalSignUp.init();
+navbar.init()
+
+
+
+
+
+
+
+
+
+
+

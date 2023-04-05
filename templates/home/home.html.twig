@@ -13,21 +13,22 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
-
     {% endblock %}
+
 </head>
 <body>
 {% include 'includes/navbar.html.twig' %}
 
 {% block body %}
-<div class="container gx-0">
-    <div class="row">
+<div class="container gx-0 gy-0">
+    <div class="row first-row">
         <div class="col-md-6 col-sm-12">
-            <h1>Gourmand, Pétillant, Acidulé</h1>
-            <p>« Nous vous emmenons à la découverte de la délicatesse d’une rose<br>
-                d’asperges, du secret d’un fumet ou d’un croustillant, de la finesse d’une <br>
-                alliance coco-betteraves-foie gras, savourez une cuisine de caractère,<br>
-                moderne, innovante et précise. »
+            <h1>Riche, Fondante, Rustique.</h1>
+            <p>« Venez découvrir des plats savoyards délicieusement copieux et rustiques,<br>
+                tels que la tartiflette fondante, des gratins de pommes de terre croustillants, <br>
+                une charcuterie de montagne savoureuse ou encore<br>
+                un plateau de fromages généreux.<br>
+                Une cuisine authentique et chaleureuse qui saura vous régaler. »
             </p>
         </div>
         <div class="col-md-6 col-sm-12">
@@ -35,11 +36,13 @@
         </div>
     </div>
 
-    <div class="row full-width">
+    <div class="row gy-0">
         <div class="col-md-6 col-sm-12 full-width">
             <div class="photo-container">
-                <img class="full-width" src={{ asset('media/img/carottes.png') }}>
-                <button>Réservation</button>
+                <img class="full-width " src={{ asset('media/img/carottes.png') }}>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">
+                    Réservation
+                </button>
             </div>
         </div>
         <div class="col-md-6 col-sm-12 full-width" >
@@ -49,17 +52,28 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <div class="background-image">
-                <h2>Texte en haut à gauche</h2>
-                <p class="text-right">Texte en bas à droite</p>
+    <div class="row gx-0">
+        <div class="col-md-12 col-sm-12 last-content">
+            <div class="last-content">
+                <h4>Vivez un instant savoureux au cœur des montagnes savoyardes.</h4>
+                <p class="text-right">"Notre cuisine savoyarde allie les saveurs intenses des montagnes <br>
+                    à une touche de modernité. Des textures croquantes et fondantes s'entremêlent <br>
+                    pour créer des plats signatures audacieux et subtils,<br>
+                    qui célèbrent l'essence même de la gastronomie alpine."</p>
             </div>
         </div>
     </div>
 </div>
 
+{% include 'includes/footer.html.twig' %}
+{% include 'includes/modalSignUp.html.twig' %}
+{% include 'includes/loginModal.html.twig' %}
+{% include 'includes/reservationModal.html.twig' %}
+
 
 {% endblock %}
 </body>
 </html>
+
+
+
