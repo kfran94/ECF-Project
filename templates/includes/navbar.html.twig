@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                    <a class="nav-link" href="{{  path('app_home') }}" >Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Menu</a>
@@ -16,10 +16,10 @@
                     <a class="nav-link" href="#" id="reservation-link" data-toggle="modal" data-target="#reservationModal">Réservation</a>
                 </li>
                 <li class="nav-item ml-lg-2">
-                    <a class="nav-link" href="{{  path('app_login') }}" id="login-link" data-toggle="modal" data-target="#loginModal">Se connecter</a>
+                    <a class="nav-link" href="{{  path('app_login') }}" >Se connecter</a>
                 </li>
                 <li class="nav-item ml-lg-2">
-                    <a class="nav-link" href="#" id="signIn-link" data-toggle="modal" data-target="#signInModal">S'inscrire</a>
+                    <a class="nav-link" href="{{ path('app_register') }}" >S'inscrire</a>
                 </li>
             </ul>
         </div>

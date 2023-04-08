@@ -1,0 +1,42 @@
+.form-container{
+  @media (min-width: 769px) {
+    margin-top: 30px;
+  }
+
+  form {
+    @media (min-width: 769px) {
+      max-width: 50%;
+    }
+    color: black;
+    max-width: 75%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    .form-group {
+      flex-basis: 50%;
+      padding: 5px;
+    }
+
+    label {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    input {
+      margin-top: 5px;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+  }
+}

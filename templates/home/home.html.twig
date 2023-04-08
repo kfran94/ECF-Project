@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Quai Antique{% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-
-    {% endblock %}
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-
-</head>
-<body>
-{% include 'includes/navbar.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
 <div class="container gx-0 gy-0">
@@ -65,15 +46,9 @@
     </div>
 </div>
 
-{% include 'includes/footer.html.twig' %}
-{% include 'includes/modalSignIn.html.twig' %}
-{% include 'includes/loginModal.html.twig' %}
-{% include 'includes/reservationModal.html.twig' %}
-
 
 {% endblock %}
-</body>
-</html>
+
 
 
 
