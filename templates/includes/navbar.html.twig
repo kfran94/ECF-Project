@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{  path('app_home') }}" >Accueil</a>
+                    <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Menu</a>
@@ -15,15 +15,24 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="reservation-link" data-toggle="modal" data-target="#reservationModal">Réservation</a>
                 </li>
-                <li class="nav-item ml-lg-2">
-                    <a class="nav-link" href="{{  path('app_login') }}" >Se connecter</a>
-                </li>
-                <li class="nav-item ml-lg-2">
-                    <a class="nav-link" href="{{ path('app_register') }}" >S'inscrire</a>
-                </li>
+                {% if app.user is not null %}
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" {% if 'ROLE_ADMIN' in app.user.roles %}id="admin-link"{% endif %} {% if 'ROLE_ADMIN' in app.user.roles %}data-toggle="modal" data-target="#adminModal"{% endif %}>Administration</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item ml-lg-2 button-circle">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#connectedModal">{{ app.user.name|slice(0, 1) ~ app.user.firstname|slice(0, 1) }}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item ml-lg-2">
+                        <a class="nav-link" href="{{ path('app_login') }}">Se connecter</a>
+                    </li>
+                    <li class="nav-item ml-lg-2">
+                        <a class="nav-link" href="{{ path('app_register') }}">S'inscrire</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
 </nav>
-
-

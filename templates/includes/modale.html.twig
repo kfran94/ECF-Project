@@ -1,0 +1,19 @@
+<div class="modal fade" id="connectedModal" tabindex="-1" role="dialog" aria-labelledby="connectedModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="connectedModalLabel">Mon compte</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="btn-close"></button>
+            </div>
+            <div class="modal-body">
+                {% if app.user is not null %}
+                    <p>Vous êtes connecté en tant que {{ app.user.firstname }} {{ app.user.name }}.</p>
+                    <p>Avec l'adresse email : {{ app.user.email }}</p>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        </div>
+    </div>
+</div>

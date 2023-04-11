@@ -7,6 +7,7 @@
 
 // any CSS you import will output into a single css file (app.scss in this case)
 import './styles/app.scss';
+import $ from 'jquery'
 
 // You can specify which plugins you need
 import { Tooltip, Toast, Popover } from 'bootstrap';
@@ -16,15 +17,9 @@ import './bootstrap';
 
 import 'jquery';
 
-import reservationModal from './js/reservationModal'
-import loginModal from './js/loginModal'
-import modalSignIn from './js/modalSignIn'
-import navbar from './js/navbar'
+import modalConnected from './js/modal'
 
-reservationModal.init();
-loginModal.init();
-modalSignIn.init();
-navbar.init()
+modalConnected.init();
 
 
 
