@@ -6,8 +6,26 @@
             </div>
             <div class="col-md-4 text-center">
                 <h4>Horaires</h4>
-                <p>Lun - Ven : 11h30 - 14h / 18h30 - 22h</p>
-                <p>Sam - Dim : 12h - 15h / 18h30 - 22h</p>
+                <ul>
+                    {% for openingHour in openingHours %}
+                        <li>
+                            <p>
+                                {{ openingHour.getDay() }} :
+                                {% if openingHour.getOpeningHoursMorning() is null and openingHour.getClosingHoursMorning() is null %}
+                                    Fermé
+                                {% else %}
+                                    {{ openingHour.getOpeningHoursMorning()|date('H:i','Europe/Paris') }} - {{ openingHour.getClosingHoursMorning()|date('H:i', 'Europe/Paris') }}
+                                {% endif %}
+                                /
+                                {% if openingHour.getOpeningHoursEvening() is null and openingHour.getClosingHoursEvening() is null %}
+                                    Fermé
+                                {% else %}
+                                    {{ openingHour.getOpeningHoursEvening()|date('H:i','Europe/Paris') }} - {{ openingHour.getClosingHoursEvening()|date('H:i','Europe/Paris') }}
+                                {% endif %}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="col-md-4 text-center">
                 <p>Tous droits réservés © {{ "now"|date("Y") }} Quai Antique</p>

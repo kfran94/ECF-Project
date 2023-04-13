@@ -1,0 +1,77 @@
+
+.container-hours-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  @media (min-width: 769px) {
+    height: 75vh;
+  }
+
+  .container-hours {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 85%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+
+    @media (min-width: 769px) {
+      width: 50%;
+    }
+
+    @media (min-width: 361px) {
+      width: 75%;
+    }
+
+
+
+    .title-hours{
+      border-bottom: solid 1px #6A6765;
+      width: 100%;
+      h1 {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+    }
+
+    table.tableHours {
+      margin: 2rem 0;
+      width: 90%;
+      border-collapse: collapse;
+      border: solid 1px black;
+      td:first-child, th:first-child{
+        width: 5%;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid black;
+        width: 10%;
+      }
+
+      th {
+        background-color: #6A6765;
+      }
+
+      tr.odd-row {
+        background-color: #f9f9f9;
+      }
+
+
+      tr.even-row {
+        background-color: #B1B1B1;
+      }
+
+
+
+      }
+    }
+  }

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+        <div class="form-seat-center">
+            <div class="form-container-seat">
+                <div class="title-seat">
+                    <h1>Modifier le nombre de place</h1>
+                </div>
+
+                <div class="form-row">
+                    {{ form_start(form) }}
+
+                    {{ form_widget(form, {'attr': {'class': 'form-seat'}}) }}
+                    <button type="submit" class="btn">Mettre à jour</button>
+                </div>
+
+                {{ form_end(form) }}
+
+                {% if form.vars.errors|length > 0 %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for error in form.vars.errors %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container-hours-center">
+    <form action="{{ path('upload_photo') }}" method="post" enctype="multipart/form-data">
+        <label for="photoFile">Photo:</label>
+        <input type="file" id="photoFile" name="photoFile">
+        <button type="submit">Upload</button>
+    </form>
+</div>
+
+
+{% endblock %}

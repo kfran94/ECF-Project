@@ -18,7 +18,12 @@
                 {% if app.user is not null %}
                     {% if 'ROLE_ADMIN' in app.user.roles %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" {% if 'ROLE_ADMIN' in app.user.roles %}id="admin-link"{% endif %} {% if 'ROLE_ADMIN' in app.user.roles %}data-toggle="modal" data-target="#adminModal"{% endif %}>Administration</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="admin-link" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                            <div class="dropdown-menu" aria-labelledby="admin-link">
+                                <a class="dropdown-item" href="{{ path('app_admin_params') }}">Nombre de places</a>
+                                <a class="dropdown-item" href="{{ path('app_hours_params') }}">Gestion horaires</a>
+                                <a class="dropdown-item" href="#">Gestion photos</a>
+                            </div>
                         </li>
                     {% endif %}
                     <li class="nav-item ml-lg-2 button-circle">

@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
 <div class="container gx-0 gy-0">
     <div class="row first-row">
+        <div class="col-md-12 col-sm-12">
+            {% if alert is defined %}
+                <div class="alert alert-{{ alert == 'danger' ? 'danger' : 'success' }}">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+
+
+
+        </div>
         <div class="col-md-6 col-sm-12">
             <h1>Riche, Fondante, Rustique.</h1>
             <p>« Venez découvrir des plats savoyards délicieusement copieux et rustiques,<br>
@@ -13,7 +25,7 @@
             </p>
         </div>
         <div class="col-md-6 col-sm-12">
-            <img src={{ asset('media/img/chef.png') }}>
+            <img src={{ asset('media/img/chef2.png') }}>
         </div>
     </div>
 

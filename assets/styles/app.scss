@@ -1,3 +1,9 @@
+// Import de Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
 @import "navbar";
@@ -6,6 +12,9 @@
 @import "home";
 @import "login.scss";
 @import "register";
+@import "seat";
+@import "hoursParams";
+@import "editHours";
 
 body {
     background-color: black;

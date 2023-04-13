@@ -1,36 +1,37 @@
 .navbar {
-  background-color: #000; /* Fond noir */
+  background-color: #000;
 
   .navbar-brand {
-    color: #b1b1b1; /* Couleur du texte */
+    color: #b1b1b1;
     &:hover {
-      color: #ecf0f1; /* Couleur du texte au survol */
+      color: #ecf0f1;
     }
   }
 
   .nav-link {
-    color: #b1b1b1; /* Couleur du texte */
+    color: #b1b1b1;
     &:hover {
-      color: #ecf0f1; /* Couleur du texte au survol */
+      color: #ecf0f1;
     }
 
     &.active {
-      color: #ecf0f1; /* Couleur du texte pour l'élément actif */
+      color: #ecf0f1;
     }
   }
 
   .navbar-toggler-icon {
-    border-color: #b1b1b1; /* Couleur de la ligne de l'icône */
+    border-color: #b1b1b1;
   }
 
   .navbar-collapse {
     .dropdown-menu {
-      background-color: #000; /* Fond noir pour le menu déroulant */
+      background-color: #000;
 
       a {
-        color: #b1b1b1; /* Couleur du texte */
+        background-color: #000;
+        color: #b1b1b1;
         &:hover {
-          color: #ecf0f1; /* Couleur du texte au survol */
+          color: #ecf0f1;
         }
       }
     }
@@ -39,18 +40,18 @@
   .nav-item {
     &.ml-lg-2 {
       &.button-circle {
-        background-color: #6A6765; /* Couleur de fond */
-        color: #fff; /* Couleur du texte (initiales) */
-        border: none; /* Suppression des bordures */
-        border-radius: 50%; /* Bordure arrondie pour créer un bouton rond */
-        padding: 0; /* Suppression du padding pour centrer le texte */
-        font-size: 18px; /* Taille de police des initiales */
-        width: 30px; /* Largeur réduite du bouton */
-        height: 30px; /* Hauteur réduite du bouton */
+        background-color: #6A6765;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 18px;
+        width: 30px;
+        height: 30px;
 
-        display: flex; /* Utilisation de flexbox */
-        align-items: center; /* Centrage vertical */
-        justify-content: center; /* Centrage horizontal */
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &::after {
           content: "";

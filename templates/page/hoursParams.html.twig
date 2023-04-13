@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-hours-center">
+        <div class="container-hours">
+            <div class="title-hours">
+                <h1>Gestion des horaires</h1>
+            </div>
+            <table class="tableHours">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Jour</th>
+                    <th>Ouverture Matin</th>
+                    <th>Fermeture Matin</th>
+                    <th>Ouverture Soir</th>
+                    <th>Fermeture Soir</th>
+                    <th>Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for openingHour in opening_hours %}
+                    {% set row_class = loop.index is even ? 'even-row' : 'odd-row' %}
+                    <tr class="{{ row_class }}" >
+                        <td>{{ loop.index }}</td>
+                        <td>{{ openingHour.day }}</td>
+                        <td>{{ openingHour.openingHoursMorning ? openingHour.openingHoursMorning.format('H:i') : '' }}</td>
+                        <td>{{ openingHour.closingHoursMorning ? openingHour.closingHoursMorning.format('H:i') : '' }}</td>
+                        <td>{{ openingHour.openingHoursEvening ? openingHour.openingHoursEvening.format('H:i') : '' }}</td>
+                        <td>{{ openingHour.closingHoursEvening ? openingHour.closingHoursEvening.format('H:i') : '' }}</td>
+                        <td>
+                            <a href="{{ path('edit_opening_hours', {'id': openingHour.id}) }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
