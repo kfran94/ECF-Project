@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Photos;
+use App\Form\PhotoFormType;
+use App\Form\PhotoUpFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,46 +14,108 @@ use Doctrine\ORM\EntityManagerInterface;
 class PhotosController extends AbstractController
 {
     #[Route('/photos', name: 'app_photos')]
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
 
-        return $this->render('page/photoUpload.html.twig', [
-            'controller_name' => 'PhotosController',
-        ]);
-    }
-    #[Route('/upload/photo', name: 'upload_photo', methods: ['POST'])]
-    public function upload(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $photoFile = $request->files->get('photoFile');
+        $photo = new Photos();
 
-        if ($photoFile) {
-            // Spécifier le répertoire de destination
-            $uploadDirectory = './public/media/upload';
-            $fileName = md5(uniqid()) . '.' . $photoFile->guessExtension();
-            $photoFile->move($uploadDirectory, $fileName);
+        $form = $this->createForm(PhotoFormType::class, $photo);
 
-            // Gérer le fichier uploadé
-            $name = $photoFile->getClientOriginalName();
-            $size = $photoFile->getSize();
-            $type = $photoFile->getClientMimeType();
 
-            // Créer une nouvelle entité Photo
-            $photo = new Photos();
-            $photo->setName($name);
-            $photo->setSize($size);
-            $photo->setType($type);
-            $photo->setPath($uploadDirectory . '/' . $fileName);
-
-            // Sauvegarder la photo en base de données
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($photo);
             $entityManager->flush();
 
-            // Rediriger vers une page de succès
-            return $this->redirectToRoute('home.home.html.twig');
+
+            return $this->render('home/home.html.twig', [
+                'message' => 'Le nombre maximum de place a été modifiées avec succès',
+                'alert' => 'success',
+            ]);
         }
 
-        // Rediriger vers une page d'erreur si aucun fichier n'a été uploadé
-        return $this->redirectToRoute('error_page');
+        return $this->render('page/photoUpload.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("admin/photosList", name="app_photos_list")
+     */
+    public function paramsHours(EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $photosList = $entityManager->getRepository(Photos::class)->findAll();
+
+        // Retourner la vue avec les données
+        return $this->render('page/photoList.html.twig', [
+            'photos_list' => $photosList
+        ]);
+    }
+
+    /**
+     * @Route("admin/photo/edit/{id}", name="edit_photo")
+     */
+    public function editPhoto(Photos $photo, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(PhotoUpFormType::class, $photo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                // Vérifier si un nouveau fichier d'image a été téléchargé
+                $nouveauFichierImage = $form->get('imageFile')->getData();
+                if ($nouveauFichierImage) {
+                    $photo->setImageFile($nouveauFichierImage);
+                } else {
+                    $photo->setImage($photo->getImageFile());
+                }
+
+                // Effectuer les modifications sur la photo
+                $entityManager->flush();
+
+                return $this->render('home/home.html.twig', [
+                    'message' => 'La photo a été modifiée avec succès',
+                    'alert' => 'success',
+                ]);
+            } catch (\Exception $e) {
+                // Gérer l'erreur en fonction de vos besoins
+                return $this->render('home/home.html.twig', [
+                    'message' => 'Une erreur est survenue lors de la modification de la photo',
+                    'alert' => 'danger',
+                ]);
+            }
+        }
+
+        return $this->render('page/photoUpdate.html.twig', [
+            'form' => $form->createView(),
+            'photo' => $photo
+        ]);
+    }
+
+
+    /**
+     * @Route("/photo/delete/{id}", name="delete_photo")
+     */
+    public function deletePhoto(Request $request, Photos $photo, EntityManagerInterface $entityManager)
+    {
+        // Vérifier si la photo existe
+        if (!$photo) {
+            throw $this->createNotFoundException('Photo non trouvée');
+        }
+
+        // Supprimer la photo du système de fichiers avec VichUploaderBundle
+        $photoPath = $this->getParameter('vich_uploader.upload_destination') . $photo->getImageName();
+        if (file_exists($photoPath)) {
+            unlink($photoPath);
+        }
+
+        // Supprimer l'entité Photo de la base de données
+        $entityManager->remove($photo);
+        $entityManager->flush();
+
+        // Rediriger vers la page d'affichage de la liste des photos
+        $this->addFlash('success', 'La photo a été supprimée avec succès.');
+        return $this->redirectToRoute('app_photos_list');
     }
 
 }

@@ -1,0 +1,93 @@
+.form-updateP-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  .form-container-photoUpdate {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 85%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    width: 100%;
+
+    @media (min-width: 769px) {
+      width: 50%;
+    }
+
+    @media (min-width: 361px) {
+      width: 75%;
+    }
+
+    .title-photoUpdate {
+      border-bottom: solid 1px #6A6765;
+      width: 100%;
+
+      h1 {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+    }
+    form{
+      margin-top: 1rem;
+      display: flex;
+      .form-group{
+        flex: 1;
+        .label-name{
+          margin-right: 1rem;
+        }
+        .name-input{
+          display: block;
+        }
+        .upload-label{
+          margin-top: 1rem;
+        }
+        .vich-image{
+          :first-child{
+            display: block
+          }
+          :nth-child(2) {
+            margin-top: 1rem;
+            display: flex
+          }
+          :nth-child(3) {
+            width: 50%;
+            img{
+              width: 300px
+            }
+          }
+        }
+      }
+    }
+
+
+
+
+
+
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-left: 35%;
+      margin-right: 35%;
+      width: 30%;
+
+      @media (max-width: 768px) {
+        width: calc(100% - 20%);
+        margin: 10px;
+      }
+    }
+  }
+}
