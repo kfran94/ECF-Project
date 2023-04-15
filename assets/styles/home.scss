@@ -1,175 +1,87 @@
 
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.container-gx0{
+  margin-top: 40px;
   margin-left: 0;
-  margin-right: 0;
-  max-width: 100%;
+  width: 100%;
 
-  .row {
-    margin-bottom: 2rem;
-    width: 100%;
-
-    &:last-child {
-      margin-bottom: 0;
+  .first-row{
+    @media (min-width: 900px) {
+      height: 100vh;
     }
 
-    @media (min-width: 769px) {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      order: 1;
-
-    }
-
-  }
-
-  .col-md-6 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 15%;
-
-    }
-
-    p {
-      font-size: 0.6rem;
-
-    }
-
-    img {
+    @media (max-width: 765px) {
+      //padding-left: 10%;
       width: 100%;
-      height: auto;
     }
+    .message{
+      width: 80%;
+      margin: 0 10%;
+      text-align: center;
 
-    @media (min-width: 769px) {
-      width: 100%;
-      flex-basis: 50%;
-      align-items: flex-start;
 
-      h1{
-        margin-left: 1rem;
-      }
 
-      p{
-        margin-left: 8%;
-      }
+     .col-md-12 col-sm-12 message{
+
+       }
+
     }
-  }
-
-
-  .photo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-bottom: 2rem;
-    height: auto;
-    width: 100%;
-
-
-
-
-    img {
-      width: 100%;
-      height: 90vh;
+    h1{
+      margin-left: 5%;
     }
-
-    button {
-      position: absolute;
-      bottom: 10%;
-      right: 50%;
-      transform: translateX(50%);
-      border: 1px solid white;
-      width: 50%;
-      height: 10%;
-      color: white;
-      background-color: transparent;
-      transition: background-color 0.3s ease-in-out;
+    p{
+      margin-left: 15%;
+      margin-top: 5%;
     }
-
-    button:hover {
-      background-color: black;
     }
+    .photo-container {
 
-    @media (max-width: 768px) {
-      flex-direction: column;
-      align-items: center;
-      padding: 0 0.2rem;
+      position: relative;
 
-
-      img {
-        height: auto;
-      }
-
-      button {
+      button{
+        position: absolute;
         bottom: 10%;
         right: 50%;
         transform: translateX(50%);
+        border: 2px solid white;
+        width: 50%;
+        height: 10%;
+        color: white;
+        background-color: transparent;
+        transition: background-color 0.3s ease-in-out;
       }
-    }
-
-
-
-    @media (max-width: 768px) {
-      .col-md-6 {
-        width: 100%;
-        align-items: flex-start;
-        padding-left: 1rem;
-        padding-right: 1rem;
+      button:hover {
+        background-color: black;
       }
 
-      .background-image,
-      .photo-container {
-        margin-bottom: 0;
-      }
 
     }
   }
+
+.last-content{
+  text-align: center;
+  padding-top: 1rem ;
+  display: flex;
+  @media (max-width: 450px) {
+    #carouselExampleControls{
+      position: absolute;
+    }
+    h4{ margin-top: 100%}
+  }
+  h4{
+    padding-top: 5%;
+    padding-bottom: 1rem;
+  }
+  p{
+   margin-top: 30%;
+    margin-left: 35%;
+  }
 }
-.row .full-width {
-  margin: 0;
-  padding: 0;
+
+
+
+
+
+img{
   width: 100%;
-}
-.container .row {
-  margin-bottom: 1rem;
-}
-
-.col-md-12.col-sm-12.last-content {
-  @media (max-width: 768px) {
-    height: 75vh;
-  }
-  height: 90vh;
-  width: 100%;
-
-  h4 {
-    position: absolute;
-    left: 2rem;
-  }
-
-  p {
-    @media (max-width: 768px) {
-      margin-top: 70%;
-      margin-left: 10%;
-    }
-    @media (min-width:460px) and (max-width: 768px) {
-      margin-top: 50%;
-      margin-left: 50%;
-    }
-
-    position: absolute;
-    margin-left: 60%;
-    margin-top: 35%;
-    font-size: 10px;
-
-  }
 }

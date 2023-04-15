@@ -16,10 +16,14 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 import './bootstrap';
 
 import 'jquery';
+import 'bootstrap'
 
 import modalConnected from './js/modal'
 
 modalConnected.init();
+
+
+
 
 
 

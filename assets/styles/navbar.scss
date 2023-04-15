@@ -6,10 +6,15 @@
     &:hover {
       color: #ecf0f1;
     }
+    img{
+      width: 70px;
+      height: auto;
+    }
   }
 
   .nav-link {
     color: #b1b1b1;
+    font-size: 20px;
     &:hover {
       color: #ecf0f1;
     }
@@ -26,8 +31,9 @@
   .navbar-collapse {
     .dropdown-menu {
       background-color: #000;
+      color: #b1b1b1;
 
-      a {
+      .dropdown-item {
         background-color: #000;
         color: #b1b1b1;
         &:hover {

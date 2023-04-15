@@ -4,103 +4,61 @@ footer {
   padding-top: 40px;
   font-size: 16px;
   margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0 0 0;
 
-  .container {
+  .col-md-4 {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
+    flex-direction: column;
 
-    .row {
-      .col-md-4 {
-        text-align: center;
-        padding-left: 0;
+    img {
+      width: 50%;
+      height: auto;
+    }
 
-        &:first-child {
-          @media (max-width: 767px) {
-            display: none;
-          }
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: flex-start;
 
-          h4 {
-            margin-bottom: 20px;
-            font-size: 24px;
-          }
 
-          p {
-            margin: 0;
-            font-size: 18px;
-          }
-        }
 
-        &:nth-child(2) {
-          @media (max-width: 767px) {
-            margin: 0;
-            padding: 20px;
-          }
-          background-color: #3d3d3d;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: center;
-          border: 1px solid #ccc;
-
-          p {
-            margin: 0;
-            font-size: 18px;
-            color: #fff;
-          }
-
-          &.col-12 {
-            width: 100%;
-          }
-
-          p {
-            font-size: 16px;
-          }
-
-        }
-
-        &:last-child {
-          @media (max-width: 767px) {
-            display: none;
-          }
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          align-items: flex-end;
-
-          p {
-            margin: 0;
-            font-size: 14px;
-            align-self: flex-end;
-          }
-
-          img {
-            margin-top: 20px;
-          }
-        }
-      }
-
-      &:last-child {
-        @media (max-width: 767px) {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
 
         p {
           margin: 0;
-          font-size: 14px;
-        }
-
-        img {
-          margin-right: 50px;
         }
       }
     }
+
+    p {
+      align-self: flex-end;
+
+
+    }
+
+  .opening-hours{
+    background-color: #3d3d3d;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    h4 {
+      color: #000;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 0.5rem;
+      }
+    }
+@media (max-width: 600px) {
+  footer{
+    .col-md-4{
+      display: none;
+    }
+    .opening-hours{
+      display: block;
+      width: 90%;
+      margin: 0 5%;
+    }
   }
+
+
 }
+

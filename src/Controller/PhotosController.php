@@ -62,7 +62,6 @@ class PhotosController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
-                // Vérifier si un nouveau fichier d'image a été téléchargé
                 $nouveauFichierImage = $form->get('imageFile')->getData();
                 if ($nouveauFichierImage) {
                     $photo->setImageFile($nouveauFichierImage);
@@ -70,15 +69,13 @@ class PhotosController extends AbstractController
                     $photo->setImage($photo->getImageFile());
                 }
 
-                // Effectuer les modifications sur la photo
                 $entityManager->flush();
 
-                return $this->render('home/home.html.twig', [
+                return $this->redirectToRoute('app_home', [
                     'message' => 'La photo a été modifiée avec succès',
                     'alert' => 'success',
                 ]);
             } catch (\Exception $e) {
-                // Gérer l'erreur en fonction de vos besoins
                 return $this->render('home/home.html.twig', [
                     'message' => 'Une erreur est survenue lors de la modification de la photo',
                     'alert' => 'danger',
