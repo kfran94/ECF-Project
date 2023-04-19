@@ -5,12 +5,16 @@ namespace App\Controller;
 use App\Entity\Photos;
 use App\Form\PhotoFormType;
 use App\Form\PhotoUpFormType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
 class PhotosController extends AbstractController
 {
     #[Route('/photos', name: 'app_photos')]
@@ -95,22 +99,22 @@ class PhotosController extends AbstractController
      */
     public function deletePhoto(Request $request, Photos $photo, EntityManagerInterface $entityManager)
     {
-        // Vérifier si la photo existe
+
         if (!$photo) {
             throw $this->createNotFoundException('Photo non trouvée');
         }
 
-        // Supprimer la photo du système de fichiers avec VichUploaderBundle
+
         $photoPath = $this->getParameter('vich_uploader.upload_destination') . $photo->getImageName();
         if (file_exists($photoPath)) {
             unlink($photoPath);
         }
 
-        // Supprimer l'entité Photo de la base de données
+
         $entityManager->remove($photo);
         $entityManager->flush();
 
-        // Rediriger vers la page d'affichage de la liste des photos
+
         $this->addFlash('success', 'La photo a été supprimée avec succès.');
         return $this->redirectToRoute('app_photos_list');
     }

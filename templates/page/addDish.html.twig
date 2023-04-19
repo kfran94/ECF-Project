@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form-dish-center">
+        <div class="form-container-dish">
+            <div class="title-dish">
+                <h1>Ajouter un plat</h1>
+            </div>
+            <form method="post">
+                {{ form_start(form) }}
+                <div class="form-row">
+                    <div class="form-col">
+                        {{ form_label(form.name, 'Nom') }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="form-col">
+                        {{ form_label(form.price, 'Prix') }}
+                        {{ form_widget(form.price) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-col">
+                        {{ form_label(form.description, 'Description') }}
+                        {{ form_widget(form.description) }}
+                    </div>
+                    <div class="form-col">
+                        {{ form_label(form.category, 'Catégorie') }}
+                        {{ form_widget(form.category, {'attr': {'class': 'category-input'}}) }}
+                    </div>
+                </div>
+                <button type="submit" class="btn">Ajouter</button>
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-photo-center">
+        <div class="container-photo">
+            <div class="title-photos">
+                <h1>Liste des Menus</h1>
+            </div>
+            <table class="tablePhotos">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titre</th>
+                    <th>Prix</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for menu in menus %}
+                    <tr>
+                        <td>{{ menu.id }}</td>
+                        <td>{{ menu.title }}</td>
+                        <td>{{ menu.price }}</td>
+                        <td>{{ menu.description }}</td>
+                        <td>
+                            <a href="{{ path('menu_delete', {'id': menu.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce menu ?')">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p class="message">Veuillez vous connecter sur ordinateur ou tablette pour accéder à ce tableau</p>
+        </div>
+    </div>
+
+{% endblock %}

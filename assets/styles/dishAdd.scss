@@ -1,0 +1,100 @@
+.form-dish-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  @media (min-width: 769px) {
+    height: 75vh;
+  }
+
+  .form-container-dish {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 85%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+
+    @media (min-width: 769px) {
+      width: 50%;
+    }
+
+    @media (min-width: 361px) {
+      width: 75%;
+    }
+
+    .title-dish {
+      border-bottom: solid 1px #6A6765;
+      width: 100%;
+      h1 {
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+    }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+
+      .form-col {
+        flex-basis: 45%;
+
+        @media (max-width: 768px) {
+          flex-basis: 100%;
+        }
+      }
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-left: 35%;
+      width: 30%;
+
+      @media (max-width: 768px) {
+        /* Modification pour que le bouton passe en 100% de largeur sur les écrans mobiles */
+        width: calc(100% - 20px);
+        margin: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .form-container-sign {
+    width: 100%;
+  }
+}
+
+.category-input {
+  margin-top: 1rem; // Ajouter une marge en haut pour séparer le label de l'input
+  @media (max-width: 768px) {
+    margin-top: 1rem; // Réduire la marge en haut pour les écrans mobiles
+  }
+}
+
+  @media (max-width: 769px) {
+    *{
+      margin-top: 1rem;
+      .form-container-dish{
+        width: 90%;
+      }
+    }
+
+  }

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="menu-tab-center">
+        <div class="container-menu-tab">
+            <div class="title-menu-tab">
+                <h1>Mes Menus</h1>
+            </div>
+            <ul class="menu-list">
+                {% for menu in menus %}
+                    <li class="menu-title">{{ menu.title }}</li>
+                    <ul class="dish-list">
+                        {% for menuLinkDish in menuLinkDishes %}
+                            {% if menuLinkDish.menuId.id == menu.id %}
+                                <li>
+                                    {% for dish in dishes %}
+                                        {% if dish.id == menuLinkDish.dishId.id %}
+                                            <div class="dish-container">
+                                                <div class="dish-name">{{ dish.name }}</div>
+                                                <form id="form-menu-link-{{ menuLinkDish.id }}" method="post" action="{{ path('app_menu_delete_link') }}" style="display: inline;">
+                                                    <input type="hidden" name="menuLinkId" value="{{ menuLinkDish.id }}">
+                                                    <button type="submit" class="delete-button">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <script>
+
+    </script>
+{% endblock %}

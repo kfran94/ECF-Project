@@ -20,7 +20,12 @@ import 'bootstrap'
 
 import modalConnected from './js/modal'
 
+
 modalConnected.init();
+
+
+
+
 
 
 

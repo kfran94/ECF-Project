@@ -1,0 +1,67 @@
+.menu-tab-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container-menu-tab {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    color: black;
+    width: 85%;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+
+    @media (min-width: 769px) {
+      width: 50%;
+    }
+
+    @media (min-width: 361px) {
+      width: 75%;
+    }
+
+    .title-menu-tab {
+      border-bottom: solid 1px #6A6765;
+      width: 100%;
+
+      h1 {
+        text-align: center;
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+    }
+
+    .menu-title {
+      margin: 1rem 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+      list-style-type: none;
+    }
+    .dish-list{
+      list-style-type: none;
+    }
+    .dish-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .dish-name {
+      flex-grow: 1;
+      margin-right: 2rem;
+    }
+
+    .delete-button {
+      background: none;
+      border: solid 1px red;
+      border-radius: 4px;
+      cursor: pointer;
+      color: red;
+    }
+  }
+}

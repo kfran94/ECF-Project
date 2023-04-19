@@ -7,12 +7,16 @@ use App\Entity\SeatMax;
 use App\Repository\OpeningHoursRepository;
 use App\Repository\SeatMaxRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
 class OpeningHoursController extends AbstractController
 {
     private $security;

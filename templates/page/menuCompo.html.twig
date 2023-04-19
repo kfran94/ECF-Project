@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="form-linkdish-center">
+        <div class="form-container-linkdish">
+            <div class="title-linkdish">
+                <h1>Composer le menu</h1>
+            </div>
+            <form method="post">
+                {{ form_start(form) }}
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            {{ form_label(form.menu_id, 'Menu à composer') }}
+                            {{ form_widget(form.menu_id, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            {{ form_label(form.dish_id, 'Plat à ajouter') }}
+                            {{ form_widget(form.dish_id, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+
+                        <button type="submit" class="btn">Ajouter</button>
+
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}
