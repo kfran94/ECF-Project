@@ -10,7 +10,7 @@
                     <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Menu</a>
+                    <a class="nav-link" href="{{ path('app_menu_carte') }}">Menu</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="reservation-link" data-toggle="modal" data-target="#reservationModal">Réservation</a>
@@ -35,7 +35,7 @@
 
                     {% endif %}
                     <li class="nav-item ml-lg-2 button-circle">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#connectedModal">{{ app.user.name|slice(0, 1)|upper ~ app.user.firstname|slice(0, 1)|upper }}</a>
+                        <a class="nav-link user-initials" href="#" data-toggle="modal" data-target="#connectedModal">{{ app.user.name|slice(0, 1)|upper ~ app.user.firstname|slice(0, 1)|upper }}</a>
                     </li>
                 {% else %}
                     <li class="nav-item ml-lg-2">

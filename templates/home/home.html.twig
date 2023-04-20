@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+<div class="row g-0">
 <div class="container-gx0">
-    <div class="row first-row">
+    <div class="row g-0 first-row">
         <div class="col-md-12 col-sm-12 message">
             {% if alert is defined %}
                 <div class="alert alert-{{ alert == 'danger' ? 'danger' : 'success' }}">
@@ -28,7 +28,7 @@
     <div class="row g-0">
         <div class="col-md-6 col-sm-12 full-width">
             <div class="photo-container">
-                <img class="full-width " src={{ asset('media/img/carottes.png') }}>
+                <img class="full-width " src={{ asset('media/img/choux.jpg') }}>
                 <button type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">
                     Réservation
                 </button>
@@ -36,7 +36,7 @@
         </div>
         <div class="col-md-6 col-sm-12 full-width" >
             <div class="photo-container">
-                <img class="full-width" src={{ asset('media/img/carottes.png') }}>
+                <img class="full-width" src={{ asset('media/img/charcuterie.jpg') }}>
                 <button>Menu</button>
             </div>
         </div>
@@ -80,5 +80,5 @@
 
     </div>
 </div>
-
+    </div>
 {% endblock %}

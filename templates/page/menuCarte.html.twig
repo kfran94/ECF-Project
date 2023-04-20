@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row g-0">
+    <div class="menu-rideau">
+        <ul>
+            <h3>Découvrez notre carte <br>ainsi que nos menus</h3>
+            <li><a href="#menu">Les Menu</a></li>
+            <li><a href="#carte">La Carte</a></li>
+        </ul>
+    </div>
+    <div class="col-md-12 d-md-block g-0">
+        <img src="{{ asset('media/img/restaurante.jpg') }}" alt="photo1" class="img-fluid picture-present">
+    </div>
+
+
+    <div class="row g-0 menu-card" id="menu">
+        {% set i = 0 %}
+        {% for menu in menus %}
+            {% set i = i + 1 %}
+            <div class="col-md-6 col-lg-6 menu-div">
+                    <h3 class="menu-title">{{ menu.title }}</h3>
+                    {% for category in ['entrée', 'plat', 'dessert'] %}
+                        <h4 class="menu-category">{{ category|title }}</h4>
+                        <ul class="dish-list">
+                            {% for menuLinkDish in menuLinkDishes %}
+                                {% if menuLinkDish.menuId.id == menu.id %}
+                                    {% for dish in dishes %}
+                                        {% if dish.id == menuLinkDish.dishId.id and dish.category == category %}
+
+                                                <div class="dish-container">
+                                                    <p class="dish-name">{{ dish.name }}</p>
+                                                </div>
+
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                <div class="price-formule">
+                    <p class="formule">
+                        Formule entrée/plat ou plat/dessert <br><br>
+                        Prix : {{ menu.price - 5 }} € <br><br>
+                        Formule entrée / plat / dessert <br><br>
+                        Prix : {{ menu.price }} €
+                    </p>
+            </div>
+            </div>
+            <div class="col-md-6 col-lg-6 pic-div">
+                {% if photos|length > 0 %}
+                    {% for photo in photos %}
+                        {% if loop.index == i %}
+                            <img src="{{ asset('media/upload/' ~ photo.imageName) }}" alt="{{ photo.customName }}" class="img-fluid">
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row carte-last">
+        <div class="row">
+            <div class="col-sm-12 carte" id="carte">
+                <h2>La Carte</h2>
+            </div>
+            {% for category in ['entrée', 'plat', 'dessert']%}
+                <div class="col-sm-12">
+                    <h4>{{category|title }}</h4>
+                    {% for dish in dishes %}
+                        {% if dish.category == category %}
+                            <p class="dish-name-carte">{{ dish.name }} - {{ dish.price }} €</p>
+                            <p class="description">{{ dish.description }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
