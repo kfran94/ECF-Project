@@ -6,6 +6,11 @@
             <div class="title-menu-tab">
                 <h1>Mes Menus</h1>
             </div>
+            {% if alert is defined %}
+                <div class="alert alert-{{ alert == 'danger' ? 'danger' : 'success' }}">
+                    {{ message }}
+                </div>
+            {% endif %}
             <ul class="menu-list">
                 {% for menu in menus %}
                     <li class="menu-title">{{ menu.title }}</li>

@@ -1,5 +1,5 @@
 index:
-    path: /home
+    path: /
     controller: App\Controller\HomeController::index
 
 controllers:
@@ -10,3 +10,7 @@ kernel:
     resource: ../src/Kernel.php
     type: annotation
 
+app_reservation_form:
+    path: /reservation/form
+    controller: App\Controller\ReservationController::form
+    methods: [GET, POST]

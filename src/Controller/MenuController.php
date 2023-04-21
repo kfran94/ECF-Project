@@ -25,10 +25,10 @@ class MenuController extends AbstractController
         $count = count($allPhotos);
 
         $selectedPhotos = [];
-        for ($i = 0; $i < $limit ; $i++){
-            do{
-                $index = rand(0, $count-1);
-            }while (in_array($index , $selectedPhotos));
+        for ($i = 0; $i < $limit; $i++) {
+            do {
+                $index = rand(0, $count - 1);
+            } while (in_array($index, $selectedPhotos));
             $selectedPhotos[] = $index;
         }
         $result = [];

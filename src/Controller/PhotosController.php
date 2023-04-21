@@ -43,9 +43,7 @@ class PhotosController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("admin/photosList", name="app_photos_list")
-     */
+    #[Route('admin/photosList', name: 'app_photos_list')]
     public function paramsHours(EntityManagerInterface $entityManager, Request $request): Response
     {
         $photosList = $entityManager->getRepository(Photos::class)->findAll();
@@ -56,9 +54,7 @@ class PhotosController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("admin/photo/edit/{id}", name="edit_photo")
-     */
+    #[Route('admin/photo/edit/{id}', name: 'edit_photo')]
     public function editPhoto(Photos $photo, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PhotoUpFormType::class, $photo);
@@ -93,10 +89,7 @@ class PhotosController extends AbstractController
         ]);
     }
 
-
-    /**
-     * @Route("/photo/delete/{id}", name="delete_photo")
-     */
+    #[Route('/photo/delete/{id}', name: 'delete_photo')]
     public function deletePhoto(Request $request, Photos $photo, EntityManagerInterface $entityManager)
     {
 

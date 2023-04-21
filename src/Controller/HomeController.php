@@ -16,7 +16,7 @@ class HomeController extends AbstractController
         $photos = $entityManager->getRepository(Photos::class)->findAll();
 
         return $this->render('home/home.html.twig', [
-            'photos'=> $photos,
+            'photos' => $photos,
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReservationLinkRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReservationLinkRepository::class)]
@@ -14,7 +15,7 @@ class ReservationLink
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservation_taken')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $client_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'booking')]
@@ -26,6 +27,12 @@ class ReservationLink
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $allergen = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $hour = null;
 
     public function getId(): ?int
     {
@@ -76,6 +83,30 @@ class ReservationLink
     public function setAllergen(?string $allergen): self
     {
         $this->allergen = $allergen;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getHour(): ?\DateTimeInterface
+    {
+        return $this->hour;
+    }
+
+    public function setHour(\DateTimeInterface $hour): self
+    {
+        $this->hour = $hour;
 
         return $this;
     }

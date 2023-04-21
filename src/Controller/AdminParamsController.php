@@ -22,15 +22,15 @@ class AdminParamsController extends AbstractController
 {
     private $security;
     private $doctrine;
+
     public function __construct(Security $security)
     {
         $this->security = $security;
 
     }
 
-    /**
-     * @Route("/admin/params", name="app_admin_params")
-     */
+
+    #[Route('/admin/params', name: 'app_admin_params')]
     public function index(Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
         if (!$this->security->isGranted('ROLE_ADMIN')) {
@@ -66,9 +66,8 @@ class AdminParamsController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("admin/paramsHours", name="app_hours_params")
-     */
+
+    #[Route('/admin/paramsHours', name: 'app_hours_params')]
     public function paramsHours(EntityManagerInterface $entityManager, Request $request): Response
     {
         $openingHours = $entityManager->getRepository(OpeningHours::class)->findAll();
@@ -79,13 +78,9 @@ class AdminParamsController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("admin/paramsHours/edit/{id}", name="edit_opening_hours")
-     */
+    #[Route('admin/paramsHours/edit/{id}', name: 'edit_opening_hours')]
     public function editOpeningHours(OpeningHours $openingHour, Request $request, EntityManagerInterface $entityManager): Response
     {
-        // Votre logique de modification d'ouverture des heures ici
-        // Utilisez $openingHour pour accéder à l'objet OpeningHours que vous souhaitez modifier
 
         // Créez un formulaire pour la modification
         $form = $this->createForm(OpeningHoursFormType::class, $openingHour);

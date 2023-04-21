@@ -20,6 +20,7 @@
             {% set i = i + 1 %}
             <div class="col-md-6 col-lg-6 menu-div">
                     <h3 class="menu-title">{{ menu.title }}</h3>
+                    <p class="menu-description">{{ menu.description }}</p>
                     {% for category in ['entrée', 'plat', 'dessert'] %}
                         <h4 class="menu-category">{{ category|title }}</h4>
                         <ul class="dish-list">

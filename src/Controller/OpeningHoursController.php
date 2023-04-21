@@ -28,9 +28,7 @@ class OpeningHoursController extends AbstractController
         $this->seatMaxRepository = $seatMaxRepository;
     }
 
-    /**
-     * @Route("/create-opening-hours", name="create_opening_hours")
-     */
+    #[Route('/create-opening-hours', name: 'create_opening_hours')]
     public function createOpeningHours(EntityManagerInterface $entityManager, OpeningHoursRepository $openingHoursRepository): Response
     {
         if (!$this->security->isGranted('ROLE_ADMIN')) {

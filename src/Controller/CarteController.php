@@ -14,8 +14,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Console\Command\DumpCompletionCommand;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +43,10 @@ class CarteController extends AbstractController
             $entityManager->persist($dish);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home');
+            return $this->render('home/home.html.twig', [
+                'message' => 'Le plat a été ajouté avec succès',
+                'alert' => 'success',
+            ]);
         }
 
         return $this->render('page/addDish.html.twig', [
@@ -67,7 +68,10 @@ class CarteController extends AbstractController
             $entityManager->persist($menu);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home');
+            return $this->render('home/home.html.twig', [
+                'message' => 'Le menu a été ajouté avec succès',
+                'alert' => 'success',
+            ]);
         }
 
         return $this->render('page/addMenu.html.twig', [
@@ -88,9 +92,10 @@ class CarteController extends AbstractController
             $em->persist($menuLinkDish);
             $em->flush();
 
-            return $this->redirectToRoute('app_menu_edit', [
-                'message' => 'Création des horaires et du nombre de place max en base de données effectuée',
+            return $this->render('page/menuCompo.html.twig', [
+                'message' => 'L\'ajout du plat au menu a été effectué avec success ',
                 'alert' => 'success',
+                'form' => $form->createView()
             ]);
         }
 
@@ -112,7 +117,7 @@ class CarteController extends AbstractController
             $menuLinkDish = $entityManager->getRepository(MenuLinkDish::class)->find($menuLinkId);
 
             if ($menuLinkDish) {
-               $entityManager->remove($menuLinkDish);
+                $entityManager->remove($menuLinkDish);
                 $entityManager->flush();
                 $this->addFlash('success', 'Le lien Menu/Plat a été supprimé avec succès.');
             } else {
@@ -125,7 +130,7 @@ class CarteController extends AbstractController
             return $this->render('page/deleteDishLink.html.twig', [
                 'menus' => $menus,
                 'dishes' => $dishes,
-                'menuLinkDishes' => $menuLinkDishes
+                'menuLinkDishes' => $menuLinkDishes,
             ]);
         }
 
