@@ -12,7 +12,7 @@
                 <tr>
                     <th></th>
                     <th>Photo</th>
-                    <th>Nom</th>
+                    <th class="nom-list-photo">Nom</th>
                     <th>Modifier</th>
                     <th>Supprimer</th> <!-- Rajout du bouton Supprimer -->
                 </tr>
@@ -23,7 +23,7 @@
                     <tr class="{{ row_class }}" >
                         <td>{{ loop.index }}</td>
                         <td><img src="{{ asset('media/upload/' ~ photo.imageName) }}" alt="{{ photo.customName }}"></td>
-                        <td>{{ photo.customName }}</td>
+                        <td class="nom-list-photo">{{ photo.customName }}</td>
                         <td>
                             <a href="{{ path('edit_photo', {'id': photo.id}) }}">
                                 <i class="fa fa-pencil"></i>
@@ -38,7 +38,6 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <p class="message">Veuillez vous connecter sur ordinateur ou tablette pour accéder à ce tableau</p>
         </div>
     </div>
 {% endblock %}

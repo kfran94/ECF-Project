@@ -69,7 +69,16 @@
       }
     }
   }
-  @media (max-width: 767px) {
+  @media (max-width: 900px) {
+    .nav-link{
+      margin-top: 0;
+    }
+    .nav-item{
+      margin: 0;
+    }
+    .dropdown-item{
+      margin: 0;
+    }
     .nav-link.user-initials {
       font-size: 18px;
       margin-top: 3px;

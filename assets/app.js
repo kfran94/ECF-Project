@@ -22,8 +22,10 @@ import menuRideau from './js/menuRideau'
 import modalConnected from './js/modal'
 
 
+
 menuRideau.init();
 modalConnected.init();
+
 
 
 
