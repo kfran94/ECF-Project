@@ -18,11 +18,13 @@ import './bootstrap';
 import 'jquery';
 import 'bootstrap'
 
-import modalConnected from './js/modal'
 import menuRideau from './js/menuRideau'
+import modalConnected from './js/modal'
 
-modalConnected.init();
+
 menuRideau.init();
+modalConnected.init();
+
 
 
 

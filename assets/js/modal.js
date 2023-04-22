@@ -1,11 +1,12 @@
 var connectedButton = document.querySelector('.nav-link[data-target="#connectedModal"]');
+if (connectedButton) {
+    connectedButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        $('#connectedModal').modal('show');
+    });
+}
 
 var closeButton = document.querySelector('.modal .btn-close');
-
-connectedButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    $('#connectedModal').modal('show');
-});
 
 closeButton.addEventListener('click', function(event) {
     $('#connectedModal').modal('hide');
