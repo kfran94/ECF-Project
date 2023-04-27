@@ -8,13 +8,17 @@ use App\Entity\Reservation;
 use App\Entity\ReservationLink;
 use App\Entity\SeatMax;
 use App\Form\ReservationFormType;
+use App\Repository\ReservationLinkRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeImmutableToDateTimeTransformer;
+use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToArrayTransformer;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Polyfill\Intl\Icu\DateFormat\FullTransformer;
 
 
 class ReservationController extends AbstractController
@@ -25,13 +29,15 @@ class ReservationController extends AbstractController
         return $this->render('page/reservation.html.twig');
     }
 
-    #[Route('/reservation/form', name: 'app_reservation_form', methods: ['GET', 'POST'])]
-    public function form(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/reservation/getHours', name: 'app_reservation_hours')]
+    public function getHours(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
-        $dateString = $request->request->get('date');
-        $date = new \DateTime($dateString);
 
-        $service = $request->request->get('service');
+        $dateString = $request->get('date');
+        $date = \DateTimeImmutable::createFromFormat('Y-m-d', $dateString);
+        $service = $request->get('service')
+       ;
+
 
         // Vérifier si une entrée existe déjà pour cette date et ce service
         $reservation = $entityManager
@@ -39,7 +45,8 @@ class ReservationController extends AbstractController
             ->findOneBy(['date' => $date, 'service' => $service]);
 
         // Si aucune entrée n'existe, créer une nouvelle réservation
-        if (!$reservation) {
+        if ($reservation == null) {
+
             $reservation = new Reservation();
             $reservation->setDate($date);
             $reservation->setService($service);
@@ -48,6 +55,7 @@ class ReservationController extends AbstractController
             $entityManager->persist($reservation);
             $entityManager->flush();
         }
+        $reservation = $entityManager->getRepository(Reservation::class)->findOneBy(['date' => $date, 'service' => $service]);
 
         // Vérifier la disponibilité des places pour cette réservation
         $reservationLinkId = $reservation->getId();
@@ -100,10 +108,14 @@ class ReservationController extends AbstractController
             $startTime = clone $openingTime;
             $endTime = clone $closingTime;
             $endTime->modify('-1 hour');
-        } else return $this->render('page/reservation.html.twig', [
-            'message' => "Désolé, nous sommes fermés pour ce service. Veuillez choisir une autre date ou un autre service.",
-            'alert' => 'danger',
-        ]);
+        } else {
+            $response = array(
+                'status' => 'error',
+                'error' => "Désolé, nous sommes fermés pour ce service. Veuillez choisir une autre date ou un autre service.",
+
+            );
+            return new JsonResponse($response);
+        }
 
 
         if ($endTime < $startTime) {
@@ -118,37 +130,40 @@ class ReservationController extends AbstractController
         }
 
         if ($remainingSeats <= 0) {
-            return $this->render('page/reservation.html.twig', [
-                'message' => "Désolé, nous sommes complets pour ce service. Veuillez choisir une autre date ou un autre service.",
-                'alert' => 'danger',
-            ]);
+            $response = array(
+                'status' => 'error',
+                'error' => "Désolé, nous sommes complets pour ce service. Veuillez choisir une autre date ou un autre service.",
+            );
+            return new JsonResponse($response);
+
         } else {
 
             $user = $this->getUser();
 
             $defaultName = $user ? $user->getName() : " ";
             $defaultAllergies = $user ? $user->getAllergen() : " ";
-            var_dump($defaultName);
 
-            $reservationForm = $this->createForm(ReservationFormType::class, null, [
-                'action' => $this->generateUrl('app_make_reservation', ['id' => $reservation->getId()]),
-                'method' => 'POST',
+
+            $reservationForm = array(
+                'status' => 'success',
                 'available_seats' => $remainingSeats,
                 'available_times' => $availableTimes,
                 'default_name' => $defaultName,
                 'default_allergies' => $defaultAllergies,
-            ]);
+                'reservation_id' => $reservation->getId()
+                );
+
+
+
+
 
 
         }
-        return $this->render('page/reservation_form.html.twig', [
-            'reservation_form' => $reservationForm->createView(),
-            'available_seats' => $remainingSeats,
-            'available_times' => $availableTimes,
 
-
-        ]);
+        return new JsonResponse($reservationForm);
     }
+
+
 
     #[Route('/reservation/make/{id}', name: 'app_make_reservation')]
     public function makeReservation(Request $request, EntityManagerInterface $entityManager, int $id): Response
@@ -156,15 +171,15 @@ class ReservationController extends AbstractController
         $reservation = $entityManager->getRepository(Reservation::class)->find($id);
 
 
-        $dateString = $_POST['reservation_form']['time'];
+        $dateString = $request->get('time');
         $date = date_create_from_format('H:i', $dateString);
 
         $reservationLink = new ReservationLink();
         $reservationLink->setReservationId($reservation);
-        $reservationLink->setName($_POST['reservation_form']['name']);
+        $reservationLink->setName($request->get('name'));
         $reservationLink->setHour($date);
-        $reservationLink->setNumberSeat($_POST['reservation_form']['number_of_seats']);
-        $reservationLink->setAllergen($_POST['reservation_form']['allergies']);
+        $reservationLink->setNumberSeat($request->get('number_of_seats'));
+        $reservationLink->setAllergen($request->get('allergies'));
 
         $entityManager->persist($reservationLink);
         $entityManager->flush();
