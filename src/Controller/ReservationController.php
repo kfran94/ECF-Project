@@ -7,18 +7,13 @@ use App\Entity\OpeningHours;
 use App\Entity\Reservation;
 use App\Entity\ReservationLink;
 use App\Entity\SeatMax;
-use App\Form\ReservationFormType;
-use App\Repository\ReservationLinkRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeImmutableToDateTimeTransformer;
-use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToArrayTransformer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Polyfill\Intl\Icu\DateFormat\FullTransformer;
+
 
 
 class ReservationController extends AbstractController
@@ -39,12 +34,11 @@ class ReservationController extends AbstractController
        ;
 
 
-        // Vérifier si une entrée existe déjà pour cette date et ce service
+
         $reservation = $entityManager
             ->getRepository(Reservation::class)
             ->findOneBy(['date' => $date, 'service' => $service]);
 
-        // Si aucune entrée n'existe, créer une nouvelle réservation
         if ($reservation == null) {
 
             $reservation = new Reservation();
@@ -57,7 +51,7 @@ class ReservationController extends AbstractController
         }
         $reservation = $entityManager->getRepository(Reservation::class)->findOneBy(['date' => $date, 'service' => $service]);
 
-        // Vérifier la disponibilité des places pour cette réservation
+
         $reservationLinkId = $reservation->getId();
         $reservationLinkRepo = $entityManager->getRepository(ReservationLink::class);
         $reservationsLinks = $reservationLinkRepo->findBy(['reservation_id' => $reservationLinkId]);
@@ -68,12 +62,12 @@ class ReservationController extends AbstractController
 
         }
 
-        // Récupérer le nombre de places maximum pour ce service
+
         $seatMaxRepo = $entityManager->getRepository(SeatMax::class);
         $seatMax = $seatMaxRepo->findOneBy(['id' => 1]);
         $totalSeats = $seatMax->getMaxSeat();
 
-        // Vérifier s'il reste des places disponibles
+
         $remainingSeats = $totalSeats - $availableSeats;
         $dayOfWeek = $date->format('l');
         $translat = array(

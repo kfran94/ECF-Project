@@ -2,11 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 80vh;
 
   @media (min-width: 769px) {
     height: 75vh;
   }
+
 
   .form-container-reservation {
     margin-top: 30px;
@@ -24,8 +25,8 @@
       width: 50%;
     }
 
-    @media (min-width: 361px) {
-      width: 75%;
+    @media (max-width: 500px) {
+      width: 98%;
     }
 
     .title-reservation {
@@ -102,4 +103,15 @@
   padding: 1rem;
   border-radius: 5px;
   margin-top: 1rem;
+}
+
+.tableListeReservation{
+  margin: 2rem 0;
+  th {
+    background-color: #6A6765;
+  }
+  th, td{
+    border: 1px solid black;
+    padding: 5px;
+  }
 }
