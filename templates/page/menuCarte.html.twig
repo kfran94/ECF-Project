@@ -85,9 +85,7 @@
         <div class="col-md-12 d-md-block g-0">
             <div class="photo-container">
                 <img class="full-width " src={{ asset('media/img/cuisine.jpg') }}>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">
-                    Réservez dès maintenant
-                </button>
+                <a href="{{ path('app_reservation') }}" class="button">Réservez dès maintenant</a>
             </div>
         </div>
     </div>
