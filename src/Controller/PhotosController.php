@@ -33,7 +33,7 @@ class PhotosController extends AbstractController
 
 
             return $this->render('home/home.html.twig', [
-                'message' => 'Le nombre maximum de place a été modifiées avec succès',
+                'message' => 'La photo a été upload avec succès',
                 'alert' => 'success',
             ]);
         }
