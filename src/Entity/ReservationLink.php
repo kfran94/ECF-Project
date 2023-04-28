@@ -14,6 +14,9 @@ class ReservationLink
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'reservation_taken')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?User $client_id = null;
 
     #[ORM\ManyToOne(inversedBy: 'booking')]
     #[ORM\JoinColumn(nullable: false)]
@@ -34,6 +37,18 @@ class ReservationLink
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getClientId(): ?User
+    {
+        return $this->client_id;
+    }
+
+    public function setClientId(?User $client_id): self
+    {
+        $this->client_id = $client_id;
+
+        return $this;
     }
 
     public function getReservationId(): ?Reservation
