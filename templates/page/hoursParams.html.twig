@@ -22,7 +22,7 @@
                 <tbody>
                 {% for openingHour in opening_hours %}
                     {% set row_class = loop.index is even ? 'even-row' : 'odd-row' %}
-                    <tr class="{{ row_class }}" >
+                    <tr class="{{ row_class }}">
                         <td>{{ loop.index }}</td>
                         <td>{{ openingHour.day }}</td>
                         <td>{{ openingHour.openingHoursMorning ? openingHour.openingHoursMorning.format('H:i') : '' }}</td>

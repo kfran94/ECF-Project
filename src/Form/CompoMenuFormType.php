@@ -7,7 +7,6 @@ use App\Entity\Dish;
 use App\Entity\MenuLinkDish;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,7 +18,7 @@ class CompoMenuFormType extends AbstractType
             ->add('menu_id', EntityType::class, [
                 'class' => Menu::class,
                 'choice_label' => 'title',
-                'choice_value'=> 'id',
+                'choice_value' => 'id',
                 'label' => 'title'
             ])
             ->add('dish_id', EntityType::class, [

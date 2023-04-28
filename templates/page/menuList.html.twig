@@ -24,7 +24,8 @@
                         <td>{{ menu.price }}</td>
                         <td>{{ menu.description }}</td>
                         <td>
-                            <a href="{{ path('menu_delete', {'id': menu.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce menu ?')">
+                            <a href="{{ path('menu_delete', {'id': menu.id}) }}"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce menu ?')">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>

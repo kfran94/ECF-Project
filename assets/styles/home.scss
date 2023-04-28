@@ -29,6 +29,7 @@
 
     h1 {
       margin-left: 5%;
+      font-family: Parisienne;
     }
 
     p {
@@ -41,20 +42,24 @@
 
     position: relative;
 
-    button {
+    .button {
       position: absolute;
       bottom: 10%;
       right: 50%;
       transform: translateX(50%);
       border: 2px solid white;
       width: 50%;
-      height: 10%;
       color: white;
       background-color: transparent;
       transition: background-color 0.3s ease-in-out;
+      text-decoration: none;
+      font-size: 1.5rem;
+      text-align: center;
+      line-height: 100%;
+      padding: 1.5rem 0;
     }
 
-    button:hover {
+    .button:hover {
       background-color: black;
     }
 
@@ -70,23 +75,42 @@
     #carouselExampleControls {
       position: absolute;
     }
-    h4 {
-      margin-top: 100%
+    h2 {
+      margin-top: 100%;
+
     }
   }
 
-  h4 {
-    padding-top: 5%;
+  h2 {
+    padding-top: 25%;
     padding-bottom: 1rem;
+    font-family: Parisienne;
+    @media (max-width: 1000px) {
+      padding-bottom: 0;
+    }
   }
 
   p {
     margin-top: 30%;
     margin-left: 35%;
+    @media (max-width: 1000px) {
+      margin-top: 10%;
+    }
   }
 }
 
 
 img {
   width: 100%;
+}
+
+.carousel-alt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  font-size: 14px;
 }

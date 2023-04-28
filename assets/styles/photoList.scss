@@ -5,7 +5,6 @@
   align-items: center;
 
 
-
   .container-photo {
     display: flex;
     flex-direction: column;
@@ -29,10 +28,10 @@
     }
 
 
-
-    .title-photos{
+    .title-photos {
       border-bottom: solid 1px #6A6765;
       width: 100%;
+
       h1 {
         text-align: center;
         padding-bottom: 1rem;
@@ -42,19 +41,20 @@
     table.tablePhotos {
       @media (max-width: 510px) {
 
-       .nom-list-photo{
-         display: none;
-       }
+        .nom-list-photo {
+          display: none;
+        }
       }
       margin: 2rem 0;
       width: 90%;
       border-collapse: collapse;
       border: solid 1px black;
-      td:first-child, th:first-child{
+
+      td:first-child, th:first-child {
         width: 5%;
       }
 
-      img{
+      img {
         width: 200px;
         height: auto;
         @media (max-width: 510px) {
@@ -82,10 +82,10 @@
       tr.even-row {
         background-color: #B1B1B1;
       }
-      .fa-trash{
+
+      .fa-trash {
         color: red;
       }
-
 
 
     }

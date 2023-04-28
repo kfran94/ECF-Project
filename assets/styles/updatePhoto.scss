@@ -15,7 +15,7 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px 0;
-    width: 100%;
+
 
     @media (min-width: 769px) {
       width: 50%;
@@ -34,41 +34,46 @@
         padding-bottom: 1rem;
       }
     }
-    form{
+
+    form {
       margin-top: 1rem;
       display: flex;
-      .form-group{
+
+      .form-group {
         flex: 1;
-        .label-name{
+
+        .label-name {
           margin-right: 1rem;
         }
-        .name-input{
+
+        .name-input {
           display: block;
         }
-        .upload-label{
+
+        .upload-label {
           margin-top: 1rem;
         }
-        .vich-image{
-          :first-child{
+
+        .vich-image {
+          :first-child {
             display: block
           }
+
           :nth-child(2) {
             margin-top: 1rem;
             display: flex
           }
+
           :nth-child(3) {
             width: 50%;
-            img{
+
+            img {
               width: 300px
             }
           }
         }
       }
     }
-
-
-
-
 
 
     .btn {

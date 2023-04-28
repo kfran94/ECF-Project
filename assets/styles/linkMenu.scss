@@ -31,6 +31,7 @@
     .title-linkdish {
       border-bottom: solid 1px #6A6765;
       width: 100%;
+
       h1 {
         text-align: center;
         padding-bottom: 1rem;
@@ -67,7 +68,7 @@
       width: 100%;
 
       @media (max-width: 768px) {
-        /* Modification pour que le bouton passe en 100% de largeur sur les écrans mobiles */
+
         width: calc(100% - 20px);
         margin: 10px;
       }
@@ -77,9 +78,10 @@
 
 
 @media (max-width: 769px) {
-  *{
+  * {
     margin-top: 1rem;
-    .form-container-linkdish{
+
+    .form-container-linkdish {
       width: 90%;
     }
   }

@@ -10,7 +10,7 @@ import './styles/app.scss';
 import $ from 'jquery'
 
 // You can specify which plugins you need
-import { Tooltip, Toast, Popover } from 'bootstrap';
+import {Tooltip, Toast, Popover} from 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';
@@ -20,11 +20,12 @@ import 'bootstrap'
 
 import menuRideau from './js/menuRideau'
 import modalConnected from './js/modal'
-
+import home from './js/home'
 
 
 menuRideau.init();
 modalConnected.init();
+home.init();
 
 
 

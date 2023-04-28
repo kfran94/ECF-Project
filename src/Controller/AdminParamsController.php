@@ -7,7 +7,6 @@ use App\Form\MaxSeatFormType;
 use App\Entity\OpeningHours;
 use App\Form\OpeningHoursFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +18,6 @@ use Symfony\Component\Security\Core\Security;
 class AdminParamsController extends AbstractController
 {
     private $security;
-    private $doctrine;
 
     public function __construct(Security $security)
     {
@@ -32,7 +30,7 @@ class AdminParamsController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
         if (!$this->security->isGranted('ROLE_ADMIN')) {
-            // Rediriger vers la page d'accueil avec un message d'erreur
+
             return $this->render('home/home.html.twig', [
                 'message' => 'Vous n\'avez pas les droits pour accéder à cette page',
                 'alert' => 'danger',
@@ -51,7 +49,7 @@ class AdminParamsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            // Rediriger vers une page de succès
+
             return $this->render('home/home.html.twig', [
                 'message' => 'Le nombre maximum de place a été modifiées avec succès',
                 'alert' => 'success',
@@ -70,7 +68,7 @@ class AdminParamsController extends AbstractController
     {
         $openingHours = $entityManager->getRepository(OpeningHours::class)->findAll();
 
-        // Retourner la vue avec les données
+
         return $this->render('page/hoursParams.html.twig', [
             'opening_hours' => $openingHours
         ]);
@@ -80,14 +78,14 @@ class AdminParamsController extends AbstractController
     public function editOpeningHours(OpeningHours $openingHour, Request $request, EntityManagerInterface $entityManager): Response
     {
 
-        // Créez un formulaire pour la modification
+
         $form = $this->createForm(OpeningHoursFormType::class, $openingHour);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            // Rediriger vers une page de succès
+
             return $this->render('home/home.html.twig', [
                 'message' => 'Les horaires d\'ouverture ont été modifiées avec succès',
                 'alert' => 'success',

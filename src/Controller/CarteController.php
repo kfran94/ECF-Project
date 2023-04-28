@@ -8,8 +8,6 @@ use App\Entity\MenuLinkDish;
 use App\Form\AddDishFormType;
 use App\Form\AddMenuFormType;
 use App\Form\CompoMenuFormType;
-use App\Form\DeleteDishLinkFormType;
-use App\Form\EditMenuFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;

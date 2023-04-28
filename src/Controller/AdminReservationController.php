@@ -36,13 +36,12 @@ class AdminReservationController extends AbstractController
             ->getRepository(Reservation::class)
             ->findOneBy(['date' => $date, 'service' => $service]);
 
-        if ($reservation == null){
+        if ($reservation == null) {
             return new JsonResponse(['status' => 'error', 'error' => 'Aucune réservation trouvée.']);
-        }else {
+        } else {
             $reservationLinks = $entityManager
                 ->getRepository(ReservationLink::class)
                 ->findBy(['reservation_id' => $reservation->getId()]);
-
 
 
             $data = [];
@@ -57,17 +56,14 @@ class AdminReservationController extends AbstractController
             }
 
 
-
-            if ($data == []){
+            if ($data == []) {
                 return new JsonResponse(['status' => 'error', 'error' => 'Aucune réservation trouvée.']);
-            } else{
+            } else {
                 return new JsonResponse(['status' => 'success', 'data' => $data]);
             }
 
         }
     }
-
-
 
 
 }

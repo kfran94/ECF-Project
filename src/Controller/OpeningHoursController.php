@@ -32,13 +32,13 @@ class OpeningHoursController extends AbstractController
     public function createOpeningHours(EntityManagerInterface $entityManager, OpeningHoursRepository $openingHoursRepository): Response
     {
         if (!$this->security->isGranted('ROLE_ADMIN')) {
-            // Rediriger vers la page d'accueil avec un message d'erreur
+
             return $this->render('home/home.html.twig', [
                 'message' => 'Vous n\'avez pas les droits pour accéder à cette page',
                 'alert' => 'danger',
             ]);
         }
-        // Vérifier si les horaires existent déjà en base de données
+
         $existingOpeningHours = $openingHoursRepository->findAll();
         if (!empty($existingOpeningHours)) {
             return $this->render('home/home.html.twig', [

@@ -30,14 +30,25 @@
 @import "menuCarte";
 @import "reservation";
 
+@font-face {
+  font-family: 'Parisienne';
+  src: url('../../public/fonts/Parisienne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url("../../public/fonts/Montserrat-Regular.ttf");
+}
+
 
 body {
-    background-color: black;
-    color: white;
-    padding-top: 100px;
-    @media (min-width: 769px) {
-        padding-top: 60px;
-    }
+  font-family: Montserrat;
+  background-color: black;
+  color: white;
+  padding-top: 100px;
+  @media (min-width: 769px) {
+    padding-top: 60px;
+  }
 }
 
 

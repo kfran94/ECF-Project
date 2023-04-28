@@ -31,6 +31,7 @@
     .title-edit-hours {
       border-bottom: solid 1px #6A6765;
       width: 100%;
+
       h1 {
         text-align: center;
         padding-bottom: 1rem;
@@ -44,13 +45,14 @@
       h3 {
         margin-top: 20px;
       }
+
       .row {
         align-items: center;
         text-align: center;
         margin: 2rem 0;
 
         @media (max-width: 768px) {
-          flex-direction: column; /* Mettre en colonne sur mobile */
+          flex-direction: column;
         }
 
         .form-group {
@@ -68,7 +70,7 @@
           }
 
           @media (max-width: 768px) {
-            width: 100%; /* Mettre la largeur à 100% sur mobile */
+            width: 100%;
           }
         }
       }

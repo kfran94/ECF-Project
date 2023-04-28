@@ -30,10 +30,10 @@
     }
 
 
-
-    .title-menu{
+    .title-menu {
       border-bottom: solid 1px #6A6765;
       width: 100%;
+
       h1 {
         text-align: center;
         padding-bottom: 1rem;
@@ -48,7 +48,8 @@
       width: 90%;
       border-collapse: collapse;
       border: solid 1px black;
-      td:first-child, th:first-child{
+
+      td:first-child, th:first-child {
         width: 5%;
       }
 
@@ -74,9 +75,9 @@
       }
 
 
-
     }
-    p.message{
+
+    p.message {
       @media (min-width: 511px) {
         display: none;
       }

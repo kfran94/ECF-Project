@@ -1,84 +1,88 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="row g-0">
-<div class="container-gx0">
-    <div class="row g-0 first-row">
-        <div class="col-md-12 col-sm-12 message">
-            {% if alert is defined %}
-                <div class="alert alert-{{ alert == 'danger' ? 'danger' : 'success' }}">
-                    {{ message }}
-                </div>
-            {% endif %}
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <h1>Riche, Fondante, Rustique.</h1>
-            <p>« Venez découvrir des plats savoyards délicieusement copieux et rustiques,<br>
-                tels que la tartiflette fondante, des gratins de pommes de terre croustillants, <br>
-                une charcuterie de montagne savoureuse ou encore<br>
-                un plateau de fromages généreux.<br>
-                Une cuisine authentique et chaleureuse qui saura vous régaler. »
-            </p>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <img class="chef" src={{ asset('media/img/chef2.png') }}>
-        </div>
-    </div>
-
     <div class="row g-0">
-        <div class="col-md-6 col-sm-12 full-width">
-            <div class="photo-container">
-                <img class="full-width " src={{ asset('media/img/choux.jpg') }}>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#reservationModal">
-                    Réservation
-                </button>
-            </div>
-        </div>
-        <div class="col-md-6 col-sm-12 full-width" >
-            <div class="photo-container">
-                <img class="full-width" src={{ asset('media/img/charcuterie.jpg') }}>
-                <button>Menu</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="row g-0">
-        <div class="last-content col-sm-12">
-                <div class="col-md-6 col-sm-12">
-                    {% if photos is defined %}
-                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            {% for photo in photos %}
-                                <div class="carousel-item {% if loop.first %}active{% endif %}">
-                                    <img src="{{ vich_uploader_asset(photo, 'imageFile') }}" class="d-block w-100" alt="{{ photo.customName }}  id="carouselImage{{ loop.index }}"">
-                                </div>
-                            {% endfor %}
+        <div class="container-gx0">
+            <div class="row g-0 first-row">
+                <div class="col-md-12 col-sm-12 message">
+                    {% if alert is defined %}
+                        <div class="alert alert-{{ alert == 'danger' ? 'danger' : 'success' }}">
+                            {{ message }}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
                     {% endif %}
-                    {% if photos is not defined %}
-                        <p>appuyer sur accueil pour recharger le carrousel</p>
-                    {% endif %}
-
                 </div>
                 <div class="col-md-6 col-sm-12">
-                <h4>Vivez un instant savoureux au cœur des montagnes savoyardes.</h4>
-                <p class="text-right col-md-6 col-sm-12">"Notre cuisine savoyarde allie les saveurs intenses des montagnes <br>
-                    à une touche de modernité. Des textures croquantes et fondantes s'entremêlent <br>
-                    pour créer des plats signatures audacieux et subtils,<br>
-                    qui célèbrent l'essence même de la gastronomie alpine."</p>
-            </div>
+                    <h1>Riche, Fondante, Rustique.</h1>
+                    <p>« Venez découvrir des plats savoyards délicieusement copieux et rustiques,<br>
+                        tels que la tartiflette fondante, des gratins de pommes de terre croustillants, <br>
+                        une charcuterie de montagne savoureuse ou encore<br>
+                        un plateau de fromages généreux.<br>
+                        Une cuisine authentique et chaleureuse qui saura vous régaler. »
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <img class="chef" src={{ asset('media/img/chef2.png') }}>
+                </div>
             </div>
 
-    </div>
-</div>
+            <div class="row g-0">
+                <div class="col-md-6 col-sm-12 full-width">
+                    <div class="photo-container">
+                        <img class="full-width " src={{ asset('media/img/choux.jpg') }}>
+                        <a href="{{ path('app_reservation') }}" class="button">Réservation</a>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 full-width">
+                    <div class="photo-container">
+                        <img class="full-width" src={{ asset('media/img/charcuterie.jpg') }}>
+                        <a href="{{ path('app_menu_carte') }}" class="button">Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <div class="last-content col-sm-12">
+                    <div class="col-md-6 col-sm-12">
+                        {% if photos is defined %}
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    {% for photo in photos %}
+                                        <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                            <img src="{{ vich_uploader_asset(photo, 'imageFile') }}"
+                                                 class="d-block w-100 carousel-image" alt="{{ photo.customName }}"
+                                                 id="carouselImage{{ loop.index }}">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                        {% if photos is not defined %}
+                            <p>appuyer sur accueil pour recharger le carrousel</p>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <h2>Vivez un instant savoureux au cœur des montagnes savoyardes.</h2>
+                        <p class="text-right col-md-6 col-sm-12">"Notre cuisine savoyarde allie les saveurs intenses des
+                            montagnes <br>
+                            à une touche de modernité. Des textures croquantes et fondantes s'entremêlent <br>
+                            pour créer des plats signatures audacieux et subtils,<br>
+                            qui célèbrent l'essence même de la gastronomie alpine."</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 {% endblock %}

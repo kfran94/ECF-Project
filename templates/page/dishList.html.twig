@@ -24,7 +24,8 @@
                         <td>{{ plat.price }}</td>
                         <td>{{ plat.description }}</td>
                         <td>
-                            <a href="{{ path('plat_delete', {'id': plat.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce plat ?')">
+                            <a href="{{ path('plat_delete', {'id': plat.id}) }}"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce plat ?')">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>

@@ -48,7 +48,7 @@ class PhotosController extends AbstractController
     {
         $photosList = $entityManager->getRepository(Photos::class)->findAll();
 
-        // Retourner la vue avec les données
+
         return $this->render('page/photoList.html.twig', [
             'photos_list' => $photosList
         ]);

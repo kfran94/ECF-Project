@@ -10,21 +10,21 @@
             <form method="post" enctype="multipart/form-data">
                 {{ form_start(form) }}
 
-                    <div class="form-group">
-                        {{ form_label(form.customName, 'Nom de la photo :', {'label_attr': {'class': 'label-name'}}) }}
-                        {{ form_widget(form.customName, {'attr': {'class': 'name-input'}}) }}
-                        {{ form_label(form.imageFile, 'Image à upload :', {'label_attr': {'class': 'upload-label'}}) }}
-                        {{ form_widget(form.imageFile, {'attr': {'class': 'upload-img'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.customName, 'Nom de la photo :', {'label_attr': {'class': 'label-name'}}) }}
+                    {{ form_widget(form.customName, {'attr': {'class': 'name-input'}}) }}
+                    {{ form_label(form.imageFile, 'Image à upload :', {'label_attr': {'class': 'upload-label'}}) }}
+                    {{ form_widget(form.imageFile, {'attr': {'class': 'upload-img'}}) }}
 
 
-                        <button type="submit" class="btn">Update</button>
-                    </div>
+                    <button type="submit" class="btn">Update</button>
                 </div>
-
-
-                {{ form_end(form) }}
-            </form>
         </div>
+
+
+        {{ form_end(form) }}
+        </form>
+    </div>
     </div>
 
 {% endblock %}

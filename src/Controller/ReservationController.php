@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-
 class ReservationController extends AbstractController
 {
     #[Route('/reservation', name: 'app_reservation')]
@@ -30,9 +29,7 @@ class ReservationController extends AbstractController
 
         $dateString = $request->get('date');
         $date = \DateTimeImmutable::createFromFormat('Y-m-d', $dateString);
-        $service = $request->get('service')
-       ;
-
+        $service = $request->get('service');
 
 
         $reservation = $entityManager
@@ -145,18 +142,13 @@ class ReservationController extends AbstractController
                 'default_name' => $defaultName,
                 'default_allergies' => $defaultAllergies,
                 'reservation_id' => $reservation->getId()
-                );
-
-
-
-
+            );
 
 
         }
 
         return new JsonResponse($reservationForm);
     }
-
 
 
     #[Route('/reservation/make/{id}', name: 'app_make_reservation')]

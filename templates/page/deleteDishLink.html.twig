@@ -22,8 +22,11 @@
                                         {% if dish.id == menuLinkDish.dishId.id %}
                                             <div class="dish-container">
                                                 <div class="dish-name">{{ dish.name }}</div>
-                                                <form id="form-menu-link-{{ menuLinkDish.id }}" method="post" action="{{ path('app_menu_delete_link') }}" style="display: inline;">
-                                                    <input type="hidden" name="menuLinkId" value="{{ menuLinkDish.id }}">
+                                                <form id="form-menu-link-{{ menuLinkDish.id }}" method="post"
+                                                      action="{{ path('app_menu_delete_link') }}"
+                                                      style="display: inline;">
+                                                    <input type="hidden" name="menuLinkId"
+                                                           value="{{ menuLinkDish.id }}">
                                                     <button type="submit" class="delete-button">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>

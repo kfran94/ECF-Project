@@ -1,13 +1,12 @@
 footer {
   background-color: black;
   color: #fff;
-  padding-top: 40px;
   font-size: 16px;
   margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0 0 0;
+  padding: 40px 0 0 0;
 
   .col-md-4 {
     display: flex;
@@ -19,43 +18,44 @@ footer {
     }
 
 
-
-
-
-        p {
-          margin: 0;
-        }
-      }
+    p {
+      margin: 0;
     }
+  }
+}
 
 
+.opening-hours {
+  background-color: #3d3d3d;
+  border: 1px solid #fff;
+  border-radius: 4px;
 
-  .opening-hours{
-    background-color: #3d3d3d;
-    border: 1px solid #fff;
-    border-radius: 4px;
-    h4 {
-      color: #fff;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 0.5rem;
-      }
-    }
+  h4 {
+    color: #fff;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 0.5rem;
+  }
+}
+
 @media (max-width: 600px) {
-  footer{
-    .col-md-4{
+  footer {
+    .col-md-4 {
       display: none;
     }
-    .opening-hours{
+
+    .opening-hours {
       display: block;
       width: 90%;
       margin: 0 5%;
     }
 
   }
-
-
 }
 
+.footer-title {
+  font-family: Montserrat;
+}
