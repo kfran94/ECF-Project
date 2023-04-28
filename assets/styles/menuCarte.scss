@@ -150,28 +150,30 @@
     img {
       height: 50vh;
     }
-    button {
-      height: 50vh
-    }
   }
 
 
-  button {
+  .button {
     position: absolute;
-    bottom: 30%;
+    bottom: 10%;
     right: 50%;
     transform: translateX(50%);
     border: 2px solid white;
     width: 50%;
-    height: 10%;
     color: white;
     background-color: transparent;
     transition: background-color 0.3s ease-in-out;
+    text-decoration: none;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 100%;
+    padding: 1.5rem 0;
   }
 
-  button:hover {
+  .button:hover {
     background-color: black;
   }
+
 
   @media(max-width: 500px) {
     button {
