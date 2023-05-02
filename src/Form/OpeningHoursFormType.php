@@ -19,28 +19,24 @@ class OpeningHoursFormType extends AbstractType
                 'required' => false,
                 'widget' => 'single_text',
                 'input' => 'datetime',
-                'model_timezone' => 'Europe/Paris',
             ])
             ->add('closing_hours_morning', null, [
                 'label' => 'Heures de fermeture (matin)',
                 'required' => false,
                 'widget' => 'single_text',
                 'input' => 'datetime',
-                'model_timezone' => 'Europe/Paris',
             ])
             ->add('opening_hours_evening', null, [
                 'label' => 'Heures d\'ouverture (soir)',
                 'required' => false,
                 'widget' => 'single_text',
                 'input' => 'datetime',
-                'model_timezone' => 'Europe/Paris',
             ])
             ->add('closing_hours_evening', null, [
                 'label' => 'Heures de fermeture (soir)',
                 'required' => false,
                 'widget' => 'single_text',
                 'input' => 'datetime',
-                'model_timezone' => 'Europe/Paris',
             ]);
     }
 
