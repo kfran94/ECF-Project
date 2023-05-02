@@ -12,13 +12,13 @@
                         {% if openingHour.getOpeningHoursMorning() is null and openingHour.getClosingHoursMorning() is null %}
                             Fermé
                         {% else %}
-                            {{ openingHour.getOpeningHoursMorning()|date('H:i','Europe/Paris') }} - {{ openingHour.getClosingHoursMorning()|date('H:i', 'Europe/Paris') }}
+                            {{ openingHour.getOpeningHoursMorning()|date('H:i') }} - {{ openingHour.getClosingHoursMorning()|date('H:i') }}
                         {% endif %}
                         /
                         {% if openingHour.getOpeningHoursEvening() is null and openingHour.getClosingHoursEvening() is null %}
                             Fermé
                         {% else %}
-                            {{ openingHour.getOpeningHoursEvening()|date('H:i','Europe/Paris') }} - {{ openingHour.getClosingHoursEvening()|date('H:i','Europe/Paris') }}
+                            {{ openingHour.getOpeningHoursEvening()|date('H:i') }} - {{ openingHour.getClosingHoursEvening()|date('H:i') }}
                         {% endif %}
                     </p>
                 </li>
