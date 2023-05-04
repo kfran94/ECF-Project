@@ -30,6 +30,7 @@ class PhotosController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($photo);
             $entityManager->flush();
+            $form->get('imageFile')->getData();
 
 
             return $this->render('home/home.html.twig', [
