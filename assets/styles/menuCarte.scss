@@ -27,7 +27,7 @@
 
     li {
       margin-bottom: 0.5rem;
-      margin-left: 2rem;
+      //margin-left: 2rem;
 
       a {
         color: #fff;
@@ -57,6 +57,7 @@
 
 .menu-card {
   margin-top: 1rem;
+  text-align: center;
 
   .pic-div {
     margin: 1rem 0;
@@ -67,23 +68,23 @@
   }
 
   .menu-title {
-    margin: 1rem 0 1rem 1rem;
+    margin: 1rem 0;
   }
 
   .menu-category {
-    margin: 1rem 0 1rem 2rem;
+    margin: 1rem 0;
   }
 
   h3 {
     margin: 1rem 0;
   }
 
-  .menu-description {
-    margin-left: 3rem;
+  .dish-list{
+    padding: 0;
   }
 
   ul {
-    margin: 1rem 0 1rem 3rem;
+    margin: 1rem 0;
   }
 
   .price-formule {
@@ -91,7 +92,7 @@
     border: #fff solid 1px;
     border-radius: 5px;
     width: 50%;
-    margin: 5% 0 0 20%;
+    margin: 2rem 25%;
     @media (max-width: 500px) {
       width: 90%;
       margin: 2rem 5%;
