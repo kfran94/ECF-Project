@@ -39,12 +39,14 @@
 
 
 body {
+
   font-family: Montserrat;
   background-color: black;
   color: white;
   padding-top: 100px;
-  @media (min-width: 769px) {
-    padding-top: 60px;
+
+  input, label {
+    margin-top: 1rem;
   }
 }
 

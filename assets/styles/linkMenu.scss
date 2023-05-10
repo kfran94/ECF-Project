@@ -4,6 +4,7 @@
   align-items: center;
   height: 80vh;
 
+
   @media (min-width: 769px) {
     height: 75vh;
   }
@@ -19,6 +20,9 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px 0;
+    *{
+      padding-top: 1rem;
+    }
 
     @media (min-width: 769px) {
       width: 50%;
@@ -78,12 +82,11 @@
 
 
 @media (max-width: 769px) {
-  * {
-    margin-top: 1rem;
+
 
     .form-container-linkdish {
       width: 90%;
-    }
+
   }
 
 }

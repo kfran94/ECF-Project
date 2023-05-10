@@ -36,11 +36,11 @@ class MenuController extends AbstractController
         }
 
         return new Response(
-            $this->render('page/menuCarte.html.twig', [
+            $this->renderView('page/menuCarte.html.twig', [
                 'dishes' => $dishes,
                 'menus' => $menus,
                 'menuLinkDishes' => $menuLinkDishes,
-                'photos' => $result
+                'photos' => $result,
             ])
         );
     }
